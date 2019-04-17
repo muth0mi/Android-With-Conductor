@@ -9,6 +9,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 
 import com.bluelinelabs.conductor.Controller;
+import com.bluelinelabs.conductor.RouterTransaction;
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
 
 public class InputsController extends Controller {
 
@@ -21,11 +23,30 @@ public class InputsController extends Controller {
         EditText et2 = view.findViewById(R.id.et2);
         Button btn = view.findViewById(R.id.btn);
 
+        btn.setOnClickListener(v -> doCalculation(Integer.valueOf(et1.getText().toString().trim()), Integer.valueOf(et2.getText().toString().trim())));
 
         return view;
     }
 
+    private void doCalculation(Integer valueOf1, Integer valueOf2) {
+        // Calculations
+        int sum = valueOf1 + valueOf2;
+        int product = valueOf1 * valueOf2;
+        int difference, quotient;
+        if (valueOf1 > valueOf2) {
+            difference = valueOf1 - valueOf2;
+            quotient = valueOf1 / valueOf2;
+        } else {
+            difference = valueOf2 - valueOf1;
+            quotient = valueOf2 / valueOf1;
+        }
 
+        // Send to output Controller
+        RouterTransaction routerTransaction = RouterTransaction
+                .with(new OutputController());
+
+        ((MainActivity) getActivity()).router.pushController(routerTransaction);
+    }
 
 
 }

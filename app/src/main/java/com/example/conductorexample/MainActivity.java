@@ -12,7 +12,7 @@ import com.bluelinelabs.conductor.RouterTransaction;
 public class MainActivity extends AppCompatActivity {
 
     // Declare router
-    private Router router;
+    public Router router;
 
 
     @Override

@@ -13,7 +13,7 @@ public class OutputController extends Controller {
 
     @Override
     protected View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
-        View view = inflater.inflate(R.layout.controller_inputs, container, false);
+        View view = inflater.inflate(R.layout.controller_outputs, container, false);
 
         // Views
         TextView tvSum = view.findViewById(R.id.sum);
