@@ -3,8 +3,8 @@ package com.example.conductorexample;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -19,7 +19,7 @@ public class InputsController extends Controller {
         // Views
         EditText et1 = view.findViewById(R.id.et1);
         EditText et2 = view.findViewById(R.id.et2);
-        EditText btn = view.findViewById(R.id.btn);
+        Button btn = view.findViewById(R.id.btn);
 
         return view;
     }

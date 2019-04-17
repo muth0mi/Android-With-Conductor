@@ -29,4 +29,11 @@ public class MainActivity extends AppCompatActivity {
             router.setRoot(RouterTransaction.with(new InputsController()));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (!router.handleBack()) {
+            super.onBackPressed();
+        }
+    }
 }
