@@ -43,7 +43,9 @@ public class InputsController extends Controller {
 
         // Send to output Controller
         RouterTransaction routerTransaction = RouterTransaction
-                .with(new OutputController());
+                .with(new OutputController())
+                .popChangeHandler(new HorizontalChangeHandler())
+                .pushChangeHandler(new HorizontalChangeHandler());
 
         ((MainActivity) getActivity()).router.pushController(routerTransaction);
     }
