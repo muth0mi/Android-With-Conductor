@@ -1,10 +1,12 @@
 package com.example.conductorexample;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -28,7 +30,8 @@ public class InputsController extends Controller {
         return view;
     }
 
-    private void doCalculation(Integer valueOf1, Integer valueOf2) {
+    private void doCalculation(int valueOf1, int valueOf2) {
+
         // Calculations
         int sum = valueOf1 + valueOf2;
         int product = valueOf1 * valueOf2;
@@ -43,7 +46,7 @@ public class InputsController extends Controller {
 
         // Send to output Controller
         RouterTransaction routerTransaction = RouterTransaction
-                .with(new OutputController())
+                .with(new OutputController(sum, product, quotient, difference))
                 .popChangeHandler(new HorizontalChangeHandler())
                 .pushChangeHandler(new HorizontalChangeHandler());
 
