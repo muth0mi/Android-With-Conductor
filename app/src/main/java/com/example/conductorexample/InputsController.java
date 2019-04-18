@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -24,8 +25,14 @@ public class InputsController extends Controller {
         EditText et2 = view.findViewById(R.id.et2);
         Button btn = view.findViewById(R.id.btn);
 
-        btn.setOnClickListener(v -> doCalculation(Integer.valueOf(et1.getText().toString().trim()), Integer.valueOf(et2.getText().toString().trim())));
+        btn.setOnClickListener(v -> {
+            if (et1.getText().toString() .isEmpty() || et2.getText().toString().isEmpty()){
+                Toast.makeText(getActivity(), "Empty inputs", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
+            doCalculation(Integer.valueOf(et1.getText().toString().trim()), Integer.valueOf(et2.getText().toString().trim()));
+        });
         return view;
     }
 
